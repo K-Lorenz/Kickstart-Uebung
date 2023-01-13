@@ -13,14 +13,14 @@ public class TTTgame {
 
         while (true) {
             printBoard();
-            System.out.println("Player " + currentPlayer + ", enter row and column (0-2) of your move:");
+            System.out.println("Spieler " + currentPlayer + ", bitte gib die Spalte und die Zeile (0-2) deines Zuges an:");
             int row;
             int col;
             col = checkNum(scanner.next());
             row = checkNum(scanner.next());
             while(!Arrays.asList(zahl).contains(col)||!Arrays.asList(zahl).contains(row) || board[row][col] != ' ' ){
                 System.out.println("Ungültige Eingabe!");
-                System.out.println("Player " + currentPlayer + ", enter row and column (0-2) of your move:");
+                System.out.println("Spieler " + currentPlayer + ", bitte gib die Spalte und die Zeile (0-2) deines Zuges an:");
                 col = checkNum(scanner.next());
                 row = checkNum(scanner.next());
             }
@@ -28,13 +28,13 @@ public class TTTgame {
 
             if (checkForWin()) {
                 printBoard();
-                System.out.println("Player " + currentPlayer + " wins!");
+                System.out.println("Spieler " + currentPlayer + " gewinnt!");
                 break;
             }
 
             if (checkForTie()) {
                 printBoard();
-                System.out.println("Tie game!");
+                System.out.println("Unentschieden!");
                 break;
             }
 
