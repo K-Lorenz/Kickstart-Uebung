@@ -13,7 +13,7 @@ public class TTTgame {
 
         while (true) {
             printBoard();
-            System.out.println("Spieler " + currentPlayer + ", bitte gib die Spalte und die Zeile (0-2) deines Zuges an:");
+            System.out.println("Spieler " + currentPlayer + ", bitte gib die Spalte und die Zeile (1-3) deines Zuges an:");
             int row;
             int col;
             col = checkNum(scanner.next());
@@ -54,7 +54,7 @@ public class TTTgame {
     public static int checkNum(String checkForNum){
         int num;
         try{
-            num = Integer.parseInt(checkForNum);
+            num = Integer.parseInt(checkForNum)-1;
         }catch (Exception e){
             num = -1;
         }
