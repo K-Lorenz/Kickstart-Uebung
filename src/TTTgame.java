@@ -1,7 +1,11 @@
+
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TTTgame {
     static char[][] board = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+    static Integer[] zahl= {0, 1, 2};
+
     static char currentPlayer = 'X';
 
     public static void main(String[] args) {
@@ -10,16 +14,26 @@ public class TTTgame {
         while (true) {
             printBoard();
             System.out.println("Player " + currentPlayer + ", enter row and column (0-2) of your move:");
-            int row = scanner.nextInt();
-            int col = scanner.nextInt();
+            int row;
+            int col;
+            col = checkNum(scanner.next());
+            row = checkNum(scanner.next());
+            while(!Arrays.asList(zahl).contains(col)||!Arrays.asList(zahl).contains(row) || board[row][col] != ' ' ){
+                System.out.println("Ungültige Eingabe!");
+                System.out.println("Player " + currentPlayer + ", enter row and column (0-2) of your move:");
+                col = checkNum(scanner.next());
+                row = checkNum(scanner.next());
+            }
             board[row][col] = currentPlayer;
 
             if (checkForWin()) {
+                printBoard();
                 System.out.println("Player " + currentPlayer + " wins!");
                 break;
             }
 
             if (checkForTie()) {
+                printBoard();
                 System.out.println("Tie game!");
                 break;
             }
@@ -36,6 +50,15 @@ public class TTTgame {
             }
         }
         System.out.println();
+    }
+    public static int checkNum(String checkForNum){
+        int num;
+        try{
+            num = Integer.parseInt(checkForNum);
+        }catch (Exception e){
+            num = -1;
+        }
+        return num;
     }
 
     public static boolean checkForWin() {
